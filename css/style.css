@@ -124,6 +124,11 @@ sub {
 
 img {
   border: 0;
+  box-sizing: border-box;
+  margin: auto;
+  padding: 3px;
+  text-align: center;
+  display: block;
 }
 
 svg:not(:root) {
@@ -148,7 +153,7 @@ code,
 kbd,
 pre,
 samp {
-  font-family: monospace,monospace;
+  font-family: consolas,monospace;
   font-size: 1em;
 }
 
@@ -5541,7 +5546,7 @@ pre,
   color: #666;
 }
 
-code {
+/* code {
   text-shadow: 0 1px #fff;
   padding: 0.2em 0.4em;
   margin: 0 0.3em;
@@ -5549,7 +5554,19 @@ code {
   background: #eee;
   border-radius: 3px;
   font-size: 85%;
+} */
+
+code {
+  text-shadow: 0 1px #fff;
+  padding: 0.2em 0.4em;
+  margin: 0 0.3em;
+  color: #FF4500;
+  /* 行内代码颜色及背景 */
+  background: #F0FFFF;
+  border-radius: 3px;
+  font-size: 85%;
 }
+/* https://hwame.top/20200520/hello-hexo-troubleshooting.html */
 
 pre code {
   background: none;
@@ -9211,11 +9228,6 @@ body.okayNav-loaded {
 
 /* 隐藏valine版权信息 */
 .txt-right{
-  display: none;
-}
-
-/* 隐藏valine评论的版权markdown图标 */
-.markdown{
   display: none;
 }
 
