@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.itpro.cc/2021/10/12/.html</loc>
+    
+    <lastmod>2021-10-12</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.itpro.cc/2021/06/19/.html</loc>
     
     <lastmod>2021-08-04</lastmod>
@@ -74,7 +81,7 @@
   </url>
   
   <url>
-    <loc>https://www.itpro.cc/tags/Exchange/</loc>
+    <loc>https://www.itpro.cc/tags/Windows-Server/</loc>
     <lastmod>2021-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -88,7 +95,14 @@
   </url>
   
   <url>
-    <loc>https://www.itpro.cc/tags/Windows-Server/</loc>
+    <loc>https://www.itpro.cc/tags/Win10/</loc>
+    <lastmod>2021-10-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.itpro.cc/tags/Exchange/</loc>
     <lastmod>2021-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
@@ -105,6 +119,13 @@
   
   <url>
     <loc>https://www.itpro.cc/categories/Windows-Server/</loc>
+    <lastmod>2021-10-12</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.itpro.cc/categories/Windows-Client/</loc>
     <lastmod>2021-10-12</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.6</priority>
