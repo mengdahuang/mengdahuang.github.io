@@ -17,16 +17,24 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>ITPro | 运维日记</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="IT Pro">
-<meta property="og:url" content="https://www.itpro.cc/index.html">
+  <title>修复Win10网络连接状态显示异常（小地球），能正常上网，但无法正常连接Outlook | ITPro | 运维日记</title>
+  <meta name="description" content="故障描述 Win10系统右下角网络图标显示网络异常（小地球）；  能正常访问网络；  Outlook无法正常连接;   故障排错通过抓包、Windows进程分析、Google发现Windows网络状态图标与下述注册表有关联 然后参考（Justin Lau，将dns.msftncsi.com等相关键值修改为 www.msftncsi.com 详细参考下列Powershell 123456789# D">
+<meta property="og:type" content="article">
+<meta property="og:title" content="修复Win10网络连接状态显示异常（小地球），能正常上网，但无法正常连接Outlook">
+<meta property="og:url" content="https://www.itpro.cc/2021/10/12/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/index.html">
 <meta property="og:site_name" content="IT Pro">
+<meta property="og:description" content="故障描述 Win10系统右下角网络图标显示网络异常（小地球）；  能正常访问网络；  Outlook无法正常连接;   故障排错通过抓包、Windows进程分析、Google发现Windows网络状态图标与下述注册表有关联 然后参考（Justin Lau，将dns.msftncsi.com等相关键值修改为 www.msftncsi.com 详细参考下列Powershell 123456789# D">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://www.itpro.cc/images/Win01.png">
+<meta property="article:published_time" content="2021-10-12T02:45:06.000Z">
+<meta property="article:modified_time" content="2021-10-12T04:07:14.731Z">
 <meta property="article:author" content="Jason Huang">
+<meta property="article:tag" content="Win10">
+<meta property="article:tag" content="Troubleshooting">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.itpro.cc/images/Win01.png">
   <!-- Canonical links -->
-  <link rel="canonical" href="https://www.itpro.cc/index.html">
+  <link rel="canonical" href="https://www.itpro.cc/2021/10/12/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/index.html">
   
     <link rel="alternate" href="/atom.xml" title="IT Pro" type="application/atom+xml">
   
@@ -37,6 +45,8 @@
 <link rel="stylesheet" href="/css/style.css">
 
   
+  
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitment@0.0.3/style/default.min.css">
   
   
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
@@ -269,43 +279,45 @@
 </aside>
 
   
-  <main class="main" role="main">
   
-  <div class="content article-list">
+<main class="main" role="main">
+  <div class="content">
+  <article id="Win10-修复Win10网络连接状态显示异常（小地球），能正常上网，但无法正常连接Outlook" class="article article-type-Win10" itemscope itemtype="http://schema.org/BlogPosting">
     
-      <article class="article article-type-Win10" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
+    <div class="article-header">
+      
+        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/10/12/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/">修复Win10网络连接状态显示异常（小地球），能正常上网，但无法正常连接Outlook</a>
+    <h1 class="article-title" itemprop="name">
+      修复Win10网络连接状态显示异常（小地球），能正常上网，但无法正常连接Outlook
     </h1>
   
 
-  </div>
-  
-  <p class="article-meta">
-    <span class="article-date">
+      
+      <div class="article-meta">
+        <span class="article-date">
     <i class="icon icon-calendar-check"></i>
 	<a href="/2021/10/12/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/" class="article-date">
-	  <time datetime="2021-10-12T02:45:06.000Z" itemprop="datePublished">10月 12</time>
+	  <time datetime="2021-10-12T02:45:06.000Z" itemprop="datePublished">2021-10-12</time>
 	</a>
 </span>
-    
+        
   <span class="article-category">
     <i class="icon icon-folder"></i>
     <a class="article-category-link" href="/categories/Windows-Client/">Windows Client</a>
   </span>
 
-    
+        
   <span class="article-tag">
     <i class="icon icon-tags"></i>
 	<a class="article-tag-link-link" href="/tags/Troubleshooting/" rel="tag">Troubleshooting</a>, <a class="article-tag-link-link" href="/tags/Win10/" rel="tag">Win10</a>
   </span>
 
 
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/10/12/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/#comments" class="article-comment-link">评论</a></span>
-    
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/10/12/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/#comments" class="article-comment-link">评论</a></span>
+        
 	
 		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 297(字)</span>
 	
@@ -313,145 +325,144 @@
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
 	
 
-  </p>
-</article>
+      </div>
+    </div>
+    <div class="article-entry marked-body" itemprop="articleBody">
+      
+        <h2 id="故障描述"><a href="#故障描述" class="headerlink" title="故障描述"></a>故障描述</h2><ul>
+<li><p>Win10系统右下角网络图标显示网络异常（小地球）；</p>
+</li>
+<li><p>能正常访问网络；</p>
+</li>
+<li><p>Outlook无法正常连接;</p>
+</li>
+</ul>
+<h2 id="故障排错"><a href="#故障排错" class="headerlink" title="故障排错"></a>故障排错</h2><p>通过抓包、Windows进程分析、Google发现Windows网络状态图标与下述注册表有关联<br><img src="/images/Win01.png" alt="Win10注册表"></p>
+<p>然后参考（<a target="_blank" rel="noopener" href="https://dotblogs.com.tw/swater111/2014/01/09/139420">Justin Lau</a>，将<code>dns.msftncsi.com</code>等相关键值修改为 <code>www.msftncsi.com</code> 详细参考下列<code>Powershell</code></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Date 2021-10-11</span></span><br><span class="line"><span class="comment">#该脚本用于修复Win10部分计算机网络连接状态显示异常（小地球），能正常上网，但无法正常连接Outlook</span></span><br><span class="line"><span class="comment">#联系方式 Mengda.huang@itpro.cc </span></span><br><span class="line"><span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet&#x27;</span> <span class="literal">-Name</span> <span class="string">&#x27;ActiveWebProbeHost&#x27;</span> <span class="literal">-Value</span> <span class="string">&#x27;www.msftncsi.com&#x27;</span></span><br><span class="line"><span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet&#x27;</span> <span class="literal">-Name</span> <span class="string">&#x27;ActiveWebProbeHostV6&#x27;</span> <span class="literal">-Value</span> <span class="string">&#x27;ipv6.msftncsi.com&#x27;</span></span><br><span class="line"><span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet&#x27;</span> <span class="literal">-Name</span> <span class="string">&#x27;ActiveWebProbeContent&#x27;</span> <span class="literal">-Value</span> <span class="string">&#x27;Microsoft NCSI&#x27;</span></span><br><span class="line"><span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet&#x27;</span> <span class="literal">-Name</span> <span class="string">&#x27;ActiveWebProbeContentV6&#x27;</span> <span class="literal">-Value</span> <span class="string">&#x27;Microsoft NCSI&#x27;</span></span><br><span class="line"><span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet&#x27;</span> <span class="literal">-Name</span> <span class="string">&#x27;ActiveWebProbePath&#x27;</span> <span class="literal">-Value</span> <span class="string">&#x27;ncsi.txt&#x27;</span></span><br><span class="line"><span class="built_in">Set-ItemProperty</span> <span class="literal">-Path</span> <span class="string">&#x27;HKLM:\SYSTEM\CurrentControlSet\Services\NlaSvc\Parameters\Internet&#x27;</span> <span class="literal">-Name</span> <span class="string">&#x27;ActiveWebProbePathV6&#x27;</span> <span class="literal">-Value</span> <span class="string">&#x27;ncsi.txt&#x27;</span></span><br></pre></td></tr></table></figure>
 
-    
-      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/06/19/Powershell%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%A1%AC%E7%9B%98%E7%9A%84%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8MDT-or-SCCM%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9%E7%9B%AE%E7%9A%84%E7%9B%98%E6%B8%85%E5%8D%95/">Powershell实现多硬盘的电脑使用MDT or SCCM安装系统选择目的盘清单</a>
-    </h1>
-  
+<p>已管理员身份执行该脚本后重启计算机即可修复</p>
 
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="https://www.itpro.cc/2021/10/12/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/" title="修复Win10网络连接状态显示异常（小地球），能正常上网，但无法正常连接Outlook" target="_blank" rel="external">https://www.itpro.cc/2021/10/12/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/</a>
+    </li>
+    
+    <li class="post-copyright-license">
+      <strong>版权声明： </strong> 本博客所有文章除特别声明外，均采用 <a href="http://creativecommons.org/licenses/by/4.0/deed.zh" target="_blank" rel="external">CC BY 4.0 CN协议</a> 许可协议。转载请注明出处！
+    </li>
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/mengdahuang" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/mengdahuang" target="_blank"><span class="text-dark">微风</span><small class="ml-1x">运维&amp;基础架构</small></a></h3>
+        <div>IT运维日记</div>
+      </div>
+    </figure>
   </div>
+</div>
+
+
+    </div>
+  </article>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2021/06/19/Powershell%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%A1%AC%E7%9B%98%E7%9A%84%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8MDT-or-SCCM%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9%E7%9B%AE%E7%9A%84%E7%9B%98%E6%B8%85%E5%8D%95/" class="article-date">
-	  <time datetime="2021-06-19T14:03:31.000Z" itemprop="datePublished">6月 19</time>
-	</a>
-</span>
     
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2/">系统部署</a>
-  </span>
+  <section id="comments">
+  	
 
     
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/MDT/" rel="tag">MDT</a>, <a class="article-tag-link-link" href="/tags/Powershell/" rel="tag">Powershell</a>, <a class="article-tag-link-link" href="/tags/SCCM/" rel="tag">SCCM</a>
-  </span>
+  </section>
 
 
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2021/06/19/Powershell%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%A1%AC%E7%9B%98%E7%9A%84%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8MDT-or-SCCM%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9%E7%9B%AE%E7%9A%84%E7%9B%98%E6%B8%85%E5%8D%95/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 666(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-windows" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/08/10/Server%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%AD%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/">Server、客户端中挖矿病毒处理方法</a>
-    </h1>
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
   
-
-  </div>
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2021/06/19/Powershell%E5%AE%9E%E7%8E%B0%E5%A4%9A%E7%A1%AC%E7%9B%98%E7%9A%84%E7%94%B5%E8%84%91%E4%BD%BF%E7%94%A8MDT-or-SCCM%E5%AE%89%E8%A3%85%E7%B3%BB%E7%BB%9F%E9%80%89%E6%8B%A9%E7%9B%AE%E7%9A%84%E7%9B%98%E6%B8%85%E5%8D%95/" title="Powershell实现多硬盘的电脑使用MDT or SCCM安装系统选择目的盘清单"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+  </ul>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/08/10/Server%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%AD%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/" class="article-date">
-	  <time datetime="2020-08-10T08:00:29.000Z" itemprop="datePublished">8月 10</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Windows-Server/">Windows Server</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Troubleshooting/" rel="tag">Troubleshooting</a>, <a class="article-tag-link-link" href="/tags/Windows-Server/" rel="tag">Windows Server</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/08/10/Server%E3%80%81%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%AD%E6%8C%96%E7%9F%BF%E7%97%85%E6%AF%92%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 898(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 3(分)</span>
-	
-
-  </p>
-</article>
-
-    
-      <article class="article article-type-exchange" itemscope itemtype="http://schema.org/BlogPosting">
-  <div class="article-header">
-    
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/13/%E9%82%AE%E7%AE%B1%E8%B4%A6%E6%88%B7OWA%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E9%85%8D%E7%BD%AEOutlook%E9%97%AE%E9%A2%98/">邮箱账户OWA能正常访问但无法正常配置Outlook问题</a>
-    </h1>
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-fancy btn-donate pop-onhover bg-gradient-warning" data-toggle="modal" data-target="#donateModal"><span>赏</span></button>
+  <!-- <div class="wave-icon wave-icon-danger btn-donate" data-toggle="modal" data-target="#donateModal">
+    <div class="wave-circle"><span class="icon"><i class="icon icon-bill"></i></span></div>
+  </div> -->
   
-
-  </div>
   
-  <p class="article-meta">
-    <span class="article-date">
-    <i class="icon icon-calendar-check"></i>
-	<a href="/2020/05/13/%E9%82%AE%E7%AE%B1%E8%B4%A6%E6%88%B7OWA%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E9%85%8D%E7%BD%AEOutlook%E9%97%AE%E9%A2%98/" class="article-date">
-	  <time datetime="2020-05-13T02:58:30.000Z" itemprop="datePublished">5月 13</time>
-	</a>
-</span>
-    
-  <span class="article-category">
-    <i class="icon icon-folder"></i>
-    <a class="article-category-link" href="/categories/Windows-Server/">Windows Server</a>
-  </span>
-
-    
-  <span class="article-tag">
-    <i class="icon icon-tags"></i>
-	<a class="article-tag-link-link" href="/tags/Exchange/" rel="tag">Exchange</a>, <a class="article-tag-link-link" href="/tags/Troubleshooting/" rel="tag">Troubleshooting</a>
-  </span>
-
-
-    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/13/%E9%82%AE%E7%AE%B1%E8%B4%A6%E6%88%B7OWA%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E9%85%8D%E7%BD%AEOutlook%E9%97%AE%E9%A2%98/#comments" class="article-comment-link">评论</a></span>
-    
-	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 330(字)</span>
-	
-	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
-	
-
-  </p>
-</article>
-
+  <div class="bar-right">
     
   </div>
+  </div>
+</nav>
+  
+<!-- Modal -->
+<div class="modal modal-center modal-small modal-xs-full fade" id="donateModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content donate">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <div class="modal-body">
+        <div class="donate-box">
+          <div class="donate-head">
+            <p>感谢您的支持，我会继续努力的!</p>
+          </div>
+          <div class="tab-content">
+            <div role="tabpanel" class="tab-pane fade active in" id="alipay">
+              <div class="donate-payimg">
+                <img src="/images/donate/alipayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开支付宝扫一扫，即可进行扫码打赏哦</p>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="wechatpay">
+              <div class="donate-payimg">
+                <img src="/images/donate/wechatpayimg.png" alt="扫码支持" title="扫一扫" />
+              </div>
+              <p class="text-muted mv">扫码打赏，你说多少就多少</p>
+              <p class="text-grey">打开微信扫一扫，即可进行扫码打赏哦</p>
+            </div>
+          </div>
+          <div class="donate-footer">
+            <ul class="nav nav-tabs nav-justified" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#alipay" id="alipay-tab" role="tab" data-toggle="tab" aria-controls="alipay" aria-expanded="true"><i class="icon icon-alipay"></i> 支付宝</a>
+              </li>
+              <li role="presentation" class="">
+                <a href="#wechatpay" role="tab" id="wechatpay-tab" data-toggle="tab" aria-controls="wechatpay" aria-expanded="false"><i class="icon icon-wepay"></i> 微信支付</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-   
+
+
 </main>
 
   <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
@@ -558,6 +569,28 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
    
+
+
+
+
+   
+    
+<script src="//cdn.jsdelivr.net/npm/gitment@0.0.3/dist/gitment.browser.min.js"></script>
+<script>
+var gitment = new Gitment({
+  // id默认为当前页面url，如果url后带参数或锚点，gitment要重新初始化
+  // https://github.com/imsun/gitment/issues/55
+  // 解决方案：id:window.location.pathname,或者将id设置为当前页面标题
+  id: '修复Win10网络连接状态显示异常（小地球），能正常上网，但无法正常连接Outlook', 
+  owner: 'mengdahuang', // 可以是你的GitHub用户名，也可以是github id
+  repo: 'mengdahuang.github.io',
+  oauth: {
+    client_id: '80632c3708be9eae7bbb',
+    client_secret: 'bdc7545d75833bd74bf374d765cefd3f2a22c42b',
+  }
+})
+gitment.render('comments')
+</script>
 
 
 
