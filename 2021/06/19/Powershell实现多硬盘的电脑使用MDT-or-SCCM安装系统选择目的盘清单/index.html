@@ -60,7 +60,7 @@
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
   
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.1"></head>
 
 
 <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
@@ -371,11 +371,13 @@
 <li><p>打开SCCM\MDT系统部署任务序列，在最顶部创建文件夹随意命名；<img src="/images/image-20210620174311112.png" alt="ChoosDisk"></p>
 </li>
 <li><p>创建任务1—检查计算机是否存在多个硬盘；<img src="/images/image-20210620175045179.png" alt="image-20210620175045179"><br>代码部分：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PowerShell.exe <span class="literal">-NoProfile</span> <span class="literal">-Command</span> <span class="string">&quot;If ((Get-Disk | Where-Object -FilterScript &#123;<span class="variable">$_</span>.Bustype -ne &#x27;USB&#x27;&#125;).Count -gt 1) &#123;<span class="variable">$TSEnv</span> = New-Object -COMObject Microsoft.SMS.TSEnvironment;<span class="variable">$TSEnv</span>.Value(‘MoreThanOneHD’)= <span class="variable">$true</span>&#125;&quot;</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PowerShell.exe <span class="literal">-NoProfile</span> <span class="literal">-Command</span> <span class="string">&quot;If ((Get-Disk | Where-Object -FilterScript &#123;<span class="variable">$_</span>.Bustype -ne &#x27;USB&#x27;&#125;).Count -gt 1) &#123;<span class="variable">$TSEnv</span> = New-Object -COMObject Microsoft.SMS.TSEnvironment;<span class="variable">$TSEnv</span>.Value(‘MoreThanOneHD’)= <span class="variable">$true</span>&#125;&quot;</span></span><br></pre></td></tr></table></figure>
+</li>
 <li><p>创建任务2—选择安装系统的目的磁盘<br><img src="/images/image-20210620175522212.png" alt="Task2"></p>
 </li>
 <li><p>将脚本上传至SCCM Package中，然后按上图所示将命令行粘贴进去（Package部分自己上传并选择），命令部分代码如下：</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%SYSTEMROOT%\System32\WindowsPowerShell\v1.<span class="number">0</span>\powershell.exe <span class="literal">-STA</span> <span class="literal">-NoProfile</span> <span class="literal">-ExecutionPolicy</span> Bypass <span class="operator">-File</span> .\ChooseDiskWPF.ps1</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%SYSTEMROOT%\System32\WindowsPowerShell\v1.<span class="number">0</span>\powershell.exe <span class="literal">-STA</span> <span class="literal">-NoProfile</span> <span class="literal">-ExecutionPolicy</span> Bypass <span class="operator">-File</span> .\ChooseDiskWPF.ps1</span><br></pre></td></tr></table></figure>
+</li>
 <li><p>在任务2选项中做个条件筛选，即——当计算机存在多块硬盘时，则执行该任务；若计算机只有一块硬盘，则跳过：<img src="/images/image-20210620180154573.png" alt="Task3"></p>
 </li>
 <li><p>重新生成Boot Image（需添加必要组件）：<br><img src="/images/image-20210620180851539.png" alt="BootImage"></p>

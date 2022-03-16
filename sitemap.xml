@@ -4,8 +4,10 @@
   <url>
     <loc>https://www.itpro.cc/2021/10/10/%E4%BF%AE%E5%A4%8DWin10%E7%BD%91%E7%BB%9C%E8%BF%9E%E6%8E%A5%E7%8A%B6%E6%80%81%E6%98%BE%E7%A4%BA%E5%BC%82%E5%B8%B8%EF%BC%88%E5%B0%8F%E5%9C%B0%E7%90%83%EF%BC%89%EF%BC%8C%E8%83%BD%E6%AD%A3%E5%B8%B8%E4%B8%8A%E7%BD%91%EF%BC%8C%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E8%BF%9E%E6%8E%A5Outlook/</loc>
     
-    <lastmod>2021-10-13</lastmod>
+    <lastmod>2022-03-16</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
@@ -13,6 +15,8 @@
     
     <lastmod>2021-10-12</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
@@ -20,6 +24,8 @@
     
     <lastmod>2021-10-12</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
@@ -27,6 +33,8 @@
     
     <lastmod>2021-08-04</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
@@ -34,6 +42,8 @@
     
     <lastmod>2021-08-02</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
@@ -41,6 +51,8 @@
     
     <lastmod>2021-06-10</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
   <url>
@@ -48,12 +60,14 @@
     
     <lastmod>2021-06-10</lastmod>
     
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   
 
   <url>
     <loc>https://www.itpro.cc/</loc>
-    <lastmod>2022-03-15</lastmod>
+    <lastmod>2022-03-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -61,74 +75,74 @@
   
   <url>
     <loc>https://www.itpro.cc/tags/MDT/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.itpro.cc/tags/SCCM/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.itpro.cc/tags/Powershell/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.itpro.cc/tags/Windows-Server/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.itpro.cc/tags/Troubleshooting/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.itpro.cc/tags/Win10/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.itpro.cc/tags/Exchange/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
 
   
   <url>
     <loc>https://www.itpro.cc/categories/%E7%B3%BB%E7%BB%9F%E9%83%A8%E7%BD%B2/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.itpro.cc/categories/Windows-Server/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.itpro.cc/categories/Windows-Client/</loc>
-    <lastmod>2022-03-15</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.6</priority>
+    <lastmod>2022-03-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
   </url>
   
 </urlset>

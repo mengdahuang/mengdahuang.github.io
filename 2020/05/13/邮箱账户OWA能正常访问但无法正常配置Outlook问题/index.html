@@ -53,7 +53,7 @@
     <link href="//cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.3.5/dist/jquery.fancybox.min.css" rel="stylesheet">
   
   
-<meta name="generator" content="Hexo 5.4.0"></head>
+<meta name="generator" content="Hexo 5.4.1"></head>
 
 
 <body class="main-center" itemscope itemtype="http://schema.org/WebPage">
@@ -336,7 +336,7 @@
         <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2020/05/13/%E9%82%AE%E7%AE%B1%E8%B4%A6%E6%88%B7OWA%E8%83%BD%E6%AD%A3%E5%B8%B8%E8%AE%BF%E9%97%AE%E4%BD%86%E6%97%A0%E6%B3%95%E6%AD%A3%E5%B8%B8%E9%85%8D%E7%BD%AEOutlook%E9%97%AE%E9%A2%98/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 330(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 342(字)</span>
 	
 	
 		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
@@ -356,13 +356,13 @@
 <p><img src="/images/pasted-5.png" alt="Outlook Logs"></p>
 <p>日志文件路径如下 <code>%temp%\Outlook Logging</code>  (该日志没有合适的软件查看，只能微软工程师通过内部软件查阅）</p>
 <h2 id="故障原因"><a href="#故障原因" class="headerlink" title="故障原因"></a>故障原因</h2><p>经微软工程师分析日志文件，得出以下结论：<br><img src="/images/pasted-6.png"></p>
-<p><code>ecMaxConnectionsExceeded</code> 代表着是``RPC Client Access<code>的</code>throttle`阈值被超过了（默认为40）</p>
-<p>与用户确认一下该账户是否为多人电脑共同使用，如果是这种情况，这需要将该值增大可以考虑创建一条专门的throttling policy来赋给这个用户，提升他的``RPC Client Access`的阈值（默认是40）</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在本地Exchange服务器上执行以下2条命令，（将``RcaMaxConcurrency` 值从默认40改为80）：</p>
+<p><code>ecMaxConnectionsExceeded</code> 代表着是&#96;&#96;RPC Client Access<code>的</code>throttle&#96;阈值被超过了（默认为40）</p>
+<p>与用户确认一下该账户是否为多人电脑共同使用，如果是这种情况，这需要将该值增大可以考虑创建一条专门的throttling policy来赋给这个用户，提升他的&#96;&#96;RPC Client Access&#96;的阈值（默认是40）</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>在本地Exchange服务器上执行以下2条命令，（将&#96;&#96;RcaMaxConcurrency&#96; 值从默认40改为80）：</p>
 <figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">New-ThrottlingPolicy</span> <span class="literal">-Name</span> policyname <span class="literal">-RcaMaxConcurrency</span> <span class="number">80</span> <span class="literal">-ThrottlingPolicyScope</span> Regular </span><br><span class="line"><span class="built_in">Set-ThrottlingPolicyAssociation</span> <span class="literal">-Identity</span> alias <span class="literal">-ThrottlingPolicy</span> policyname</span><br></pre></td></tr></table></figure>
 
 <p>Alias替换为用户的alias, policyname换成任意的名字。</p>
-<p>配置完成之后，再次配置Outlook，成功通过，如果此时还是不能配置完成，则需在前后端做``iisreset`来使配置生效。</p>
+<p>配置完成之后，再次配置Outlook，成功通过，如果此时还是不能配置完成，则需在前后端做&#96;&#96;iisreset&#96;来使配置生效。</p>
 
       
     </div>
